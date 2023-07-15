@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "75423c05-a5b0-45ed-8dea-d1de1fa9f9e6",
+		"name": "PaymentMethodAPIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Payment Methods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/payment-methods",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"payment-methods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment Collection",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"paymentReference\", data.payment_reference);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "88a82e100ab36897f333fe698047e88db18ec3cd",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payment_method_id\": \"crypto\",\r\n    \"order_currency\": \"SGD\",\r\n    \"order_amount\": \"10.145\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/payment-collections",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"payment-collections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Collection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/payment-collections/:payment_reference",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"payment-collections",
+						":payment_reference"
+					],
+					"variable": [
+						{
+							"key": "payment_reference",
+							"value": "{{paymentReference}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
