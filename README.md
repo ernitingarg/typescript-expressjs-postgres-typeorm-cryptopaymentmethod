@@ -1,6 +1,6 @@
 # CryptoPaymentMethod project
 
-This project is a backend server that exposes several API endpoints for managing different types of payments (eg: Nets, Visa, Crypto) by using various payment providers.
+This demo project is a backend server that exposes several API endpoints for managing different types of payments (eg: Nets, Visa, Crypto) by using various payment providers.
 The server leverages the APIs provided by the external payment provider [TripleA](https://developers.triple-a.io/docs/triplea-api-doc/) for processing Crypto payments.
 
 ## Features
